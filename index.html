@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vista Agente en VS Code</title>
+    <meta
+      name="description"
+      content="Guia practica de la nueva vista Agente de VS Code: que es, como usarla y flujos recomendados."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="eyebrow">VS Code + Copilot</p>
+      <h1>La nueva vista Agente en VS Code</h1>
+      <p class="subtitle">
+        Una forma mas natural de delegar tareas, revisar resultados y acelerar tu flujo de desarrollo.
+      </p>
+      <a class="cta" href="#empezar">Quiero empezar</a>
+    </header>
+
+    <main>
+      <section id="que-es" class="card">
+        <h2>Que es la vista Agente</h2>
+        <p>
+          Es una interfaz centrada en tareas donde puedes pedir objetivos en lenguaje natural y dejar que el
+          agente explore, edite y valide cambios de forma guiada.
+        </p>
+      </section>
+
+      <section id="empezar" class="card">
+        <h2>Como abrirla</h2>
+        <ol>
+          <li>Actualiza VS Code a una version reciente.</li>
+          <li>Abre el panel de Chat/Copilot.</li>
+          <li>Selecciona el modo <strong>Agente</strong>.</li>
+          <li>Escribe una tarea concreta: objetivo + contexto + restriccion.</li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <h2>Flujo recomendado</h2>
+        <div class="grid">
+          <article>
+            <h3>1) Define el objetivo</h3>
+            <p>"Implementa X en este repo y valida con tests existentes".</p>
+          </article>
+          <article>
+            <h3>2) Revisa el plan</h3>
+            <p>Confirma que cubre alcance, archivos y criterios de exito.</p>
+          </article>
+          <article>
+            <h3>3) Ejecuta y verifica</h3>
+            <p>Comprueba cambios, tests y comportamiento final antes de aceptar.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Buenas practicas</h2>
+        <ul>
+          <li>Divide tareas grandes en entregables pequenos.</li>
+          <li>Pide siempre validacion con build/test reales.</li>
+          <li>Incluye restricciones de estilo y arquitectura del proyecto.</li>
+          <li>Itera: feedback corto y especifico mejora mucho el resultado.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Hecho para compartir y aprender sobre la vista Agente de VS Code.</p>
+      <p id="year"></p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

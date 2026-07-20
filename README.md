@@ -13,3 +13,11 @@ Sitio estatico para explicar la nueva vista Agente de VS Code.
 URL esperada:
 
 `https://lunasoft2001.github.io/vista-agente-vscode/`
+
+---
+
+**Disponible en otros idiomas:**
+- 🇬🇧 [English](README.en.md)
+- 🇩🇪 [Deutsch](README.de.md)
+- 🇫🇷 [Français](README.fr.md)
+- 🇮🇹 [Italiano](README.it.md)

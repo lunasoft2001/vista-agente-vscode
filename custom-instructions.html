@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instrucciones personalizadas en VS Code Copilot</title>
+    <meta
+      name="description"
+      content="Guia practica para entender y crear instrucciones personalizadas en VS Code Copilot: always on, file-based, workspace y perfil."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="eyebrow">VS Code + Copilot</p>
+      <h1>Instrucciones personalizadas</h1>
+      <p class="subtitle">
+        Define reglas claras para que Copilot responda con tu estilo, contexto y objetivos en cada tarea.
+      </p>
+      <div class="cta-group">
+        <a class="cta" href="#explicacion-general">Ver secciones</a>
+        <a class="cta secondary" href="index.html">Volver a la portada</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="explicacion-general" class="card">
+        <h2>Explicacion general: always on y file-based</h2>
+        <p>
+          Las instrucciones personalizadas permiten guiar el comportamiento de Copilot mas alla de un prompt puntual.
+          Puedes combinarlas para mantener consistencia tecnica y de comunicacion.
+        </p>
+        <div class="grid">
+          <article>
+            <h3>Always on</h3>
+            <p>
+              Son directivas persistentes que Copilot tiene presentes de forma continua en las respuestas del chat y en
+              el trabajo del agente.
+            </p>
+          </article>
+          <article>
+            <h3>File-based</h3>
+            <p>
+              Son instrucciones escritas en archivos dentro del repo. Sirven para capturar normas del proyecto y
+              aplicarlas cuando Copilot trabaja sobre ese codigo.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Crear instrucciones a nivel de workspace en VS Code</h2>
+        <p>
+          Usa directivas especificas para un proyecto concreto. Ideal para arquitectura, convenciones del equipo y
+          requisitos tecnicos de ese repositorio.
+        </p>
+        <ol>
+          <li>Abre el proyecto en VS Code.</li>
+          <li>Ve a la configuracion de Copilot Chat para el workspace.</li>
+          <li>Define instrucciones centradas en este repo: estilo, validaciones y limites de cambio.</li>
+          <li>Guarda y prueba con una tarea real para validar que Copilot sigue esas directivas.</li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <h2>Crear instrucciones de perfil de usuario en VS Code Copilot</h2>
+        <p>
+          Son reglas globales para tu cuenta y se aplican en todos tus proyectos. Utilizalas para preferencias
+          personales de comunicacion, idioma y formato de respuesta.
+        </p>
+        <ol>
+          <li>Abre los ajustes de perfil de Copilot en VS Code.</li>
+          <li>Escribe directivas transversales que quieras mantener siempre.</li>
+          <li>Evita meter detalles de un solo repo para no contaminar otros contextos.</li>
+          <li>Revisa periodicamente estas reglas para mantenerlas utiles y actuales.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>Pagina dedicada a sacar mas valor de Copilot con instrucciones personalizadas.</p>
+      <p id="year"></p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

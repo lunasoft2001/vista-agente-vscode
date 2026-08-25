@@ -6,7 +6,7 @@
     <title>Instrucciones personalizadas en VS Code Copilot</title>
     <meta
       name="description"
-      content="Guia practica para entender y crear instrucciones personalizadas en VS Code Copilot: always on, file-based, workspace y perfil."
+      content="Guía práctica sobre instrucciones personalizadas en VS Code Copilot: copilot-instructions.md, AGENTS.md, ficheros .instructions.md, prioridad y buenas prácticas."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -25,60 +25,134 @@
 
     <main>
       <section id="explicacion-general" class="card">
-        <h2>Explicacion general: always on y file-based</h2>
+        <h2>Explicación general: instrucciones always-on y file-based</h2>
         <p>
-          Las instrucciones personalizadas permiten guiar el comportamiento de Copilot mas alla de un prompt puntual.
-          Puedes combinarlas para mantener consistencia tecnica y de comunicacion.
+          Las instrucciones personalizadas definen normas y guías que influyen automáticamente en cómo el agente
+          genera código y resuelve tareas, sin tener que repetir el contexto en cada prompt. Si hay varios ficheros
+          de instrucciones en el proyecto, VS Code los combina en el contexto del chat (sin un orden garantizado).
         </p>
         <div class="grid">
           <article>
-            <h3>Always on</h3>
+            <h3>Always-on</h3>
             <p>
-              Son directivas persistentes que Copilot tiene presentes de forma continua en las respuestas del chat y en
-              el trabajo del agente.
+              Se incluyen automáticamente en cada petición de chat. Utilízalas para estándares de código, decisiones
+              de arquitectura y convenciones que aplican a todo el proyecto.
             </p>
           </article>
           <article>
             <h3>File-based</h3>
             <p>
-              Son instrucciones escritas en archivos dentro del repo. Sirven para capturar normas del proyecto y
-              aplicarlas cuando Copilot trabaja sobre ese codigo.
+              Se aplican cuando el fichero sobre el que trabaja el agente coincide con un patrón, o cuando la
+              descripción coincide con la tarea actual. Ideales para convenciones de un lenguaje o framework concreto.
             </p>
           </article>
         </div>
       </section>
 
-      <section class="card">
+      <section id="always-on" class="card">
+        <h2>Propósito de las instrucciones always-on</h2>
+        <p>Estas opciones se aplican automáticamente a todas las peticiones de chat del workspace:</p>
+        <div class="grid">
+          <article>
+            <h3><code>.github/copilot-instructions.md</code></h3>
+            <p>
+              Un único fichero Markdown en la raíz del workspace. VS Code lo detecta automáticamente. Ideal para
+              estilo de código, stack tecnológico, patrones de arquitectura y requisitos de seguridad.
+            </p>
+          </article>
+          <article>
+            <h3><code>AGENTS.md</code></h3>
+            <p>
+              Uno o varios ficheros, en la raíz o en subcarpetas (experimental). Útiles si trabajas con varios agentes
+              de IA y quieres un único conjunto de instrucciones reconocido por todos ellos.
+            </p>
+          </article>
+          <article>
+            <h3>Instrucciones de organización</h3>
+            <p>
+              Definidas a nivel de organización de GitHub para compartirlas entre varios workspaces y repositorios.
+              Se activan con el ajuste <code>github.copilot.chat.organizationInstructions.enabled</code>.
+            </p>
+          </article>
+          <article>
+            <h3><code>CLAUDE.md</code></h3>
+            <p>
+              Compatibilidad con Claude Code y otras herramientas basadas en Claude. Se busca en la raíz del
+              workspace, en <code>.claude/</code> o en el home del usuario.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="file-based" class="card">
+        <h2>Ficheros <code>.instructions.md</code>: instrucciones file-based</h2>
+        <p>
+          Se aplican de forma condicional según el tipo de fichero o su ubicación, usando la propiedad
+          <code>applyTo</code> con un patrón glob en la cabecera YAML del fichero. Por defecto se guardan en
+          <code>.github/instructions</code> (workspace) o en <code>~/.copilot/instructions</code> (perfil de usuario),
+          y VS Code busca recursivamente en subcarpetas.
+        </p>
+        <pre><code>---
+name: 'Python Standards'
+description: 'Convenciones para ficheros Python'
+applyTo: '**/*.py'
+---
+# Estándares de código Python
+- Sigue la guía de estilo PEP 8.
+- Usa type hints en todas las firmas de función.
+- Escribe docstrings para las funciones públicas.</code></pre>
+        <p>Úsalas para convenciones distintas entre frontend y backend, guías específicas de un lenguaje en un monorepo, o reglas para ficheros de test y documentación.</p>
+      </section>
+
+      <section id="workspace" class="card">
         <h2>Crear instrucciones a nivel de workspace en VS Code</h2>
         <p>
-          Usa directivas especificas para un proyecto concreto. Ideal para arquitectura, convenciones del equipo y
-          requisitos tecnicos de ese repositorio.
+          Usa directivas específicas para un proyecto concreto. Ideal para arquitectura, convenciones del equipo y
+          requisitos técnicos de ese repositorio.
         </p>
         <ol>
-          <li>Abre el proyecto en VS Code.</li>
-          <li>Ve a la configuracion de Copilot Chat para el workspace.</li>
-          <li>Define instrucciones centradas en este repo: estilo, validaciones y limites de cambio.</li>
-          <li>Guarda y prueba con una tarea real para validar que Copilot sigue esas directivas.</li>
+          <li>Abre la vista de Chat y selecciona <strong>Configure Chat</strong> (icono de engranaje) para abrir el editor de Agent Customizations, pestaña <strong>Instructions</strong>.</li>
+          <li>Elige <strong>New Instructions (Workspace)</strong> en el desplegable, o ejecuta <strong>Chat: New Instructions File</strong> desde la paleta de comandos.</li>
+          <li>Define la cabecera <code>applyTo</code> (o deja el fichero como <code>copilot-instructions.md</code> para que aplique siempre) y escribe las reglas en el cuerpo.</li>
+          <li>Guarda, inclúyelo en control de versiones y pruébalo con una tarea real para validar que el agente sigue esas directivas.</li>
         </ol>
       </section>
 
-      <section class="card">
+      <section id="perfil" class="card">
         <h2>Crear instrucciones de perfil de usuario en VS Code Copilot</h2>
         <p>
-          Son reglas globales para tu cuenta y se aplican en todos tus proyectos. Utilizalas para preferencias
-          personales de comunicacion, idioma y formato de respuesta.
+          Son reglas que se aplican en todos tus workspaces (guardadas en tu perfil de VS Code, por ejemplo
+          <code>~/.copilot/instructions</code>). Utilízalas para preferencias personales de comunicación, idioma y
+          formato de respuesta.
         </p>
         <ol>
-          <li>Abre los ajustes de perfil de Copilot en VS Code.</li>
-          <li>Escribe directivas transversales que quieras mantener siempre.</li>
-          <li>Evita meter detalles de un solo repo para no contaminar otros contextos.</li>
-          <li>Revisa periodicamente estas reglas para mantenerlas utiles y actuales.</li>
+          <li>En la vista de Chat, abre el editor de Agent Customizations y selecciona <strong>New Instructions (User)</strong>.</li>
+          <li>Escribe directivas transversales que quieras mantener siempre, sin detalles de un solo repo.</li>
+          <li>Activa <strong>Settings Sync</strong> (sección "Prompts and Instructions") si quieres sincronizarlas entre dispositivos.</li>
+          <li>Revisa periódicamente estas reglas para mantenerlas útiles y actuales.</li>
         </ol>
+      </section>
+
+      <section id="prioridad" class="card">
+        <h2>Prioridad y buenas prácticas</h2>
+        <p>Cuando existen varios tipos de instrucciones, todas se envían al modelo, pero en caso de conflicto se prioriza en este orden:</p>
+        <ol>
+          <li>Instrucciones personales (nivel usuario) &mdash; prioridad más alta.</li>
+          <li>Instrucciones del repositorio (<code>.github/copilot-instructions.md</code> o <code>AGENTS.md</code>).</li>
+          <li>Instrucciones de organización &mdash; prioridad más baja.</li>
+        </ol>
+        <ul>
+          <li>Mantén cada instrucción corta y en una sola idea; divide la información en varias instrucciones si hace falta.</li>
+          <li>Incluye el porqué de una regla: ayuda al modelo a decidir mejor en casos límite.</li>
+          <li>Muestra ejemplos de código de patrones preferidos y a evitar.</li>
+          <li>Evita repetir normas que ya aplica un linter o formateador.</li>
+          <li>Guarda las instrucciones de proyecto en el workspace y en control de versiones para compartirlas con el equipo.</li>
+        </ul>
       </section>
     </main>
 
     <footer>
-      <p>Pagina dedicada a sacar mas valor de Copilot con instrucciones personalizadas.</p>
+      <p>Página dedicada a sacar más valor de Copilot con instrucciones personalizadas.</p>
       <p id="year"></p>
     </footer>
 

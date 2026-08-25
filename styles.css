@@ -99,6 +99,31 @@ h3 {
   margin-top: 0;
 }
 
+code {
+  background: #0d1733;
+  border: 1px solid #2a3965;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.35rem;
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  background: #0d1733;
+  border: 1px solid #2a3965;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
 footer {
   border-top: 1px solid #263861;
   padding: 1.3rem 1rem 2rem;

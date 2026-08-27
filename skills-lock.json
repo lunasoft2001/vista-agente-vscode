@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "baoyu-comic": {
+      "source": "NousResearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "optional-skills/creative/baoyu-comic/SKILL.md",
+      "computedHash": "052320af0d0aa50fd4f64d58b0b057891e4341335fed8e62c793f7b36809166c"
+    }
+  }
+}

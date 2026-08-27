@@ -1,8 +1,8 @@
 # vista-agente-vscode
 
-Sitio estatico para explicar la nueva vista Agente de VS Code.
+Sitio estático para explicar la nueva vista Agente de VS Code.
 
-## Publicacion con GitHub Pages
+## Publicación con GitHub Pages
 
 1. Ve a **Settings > Pages**.
 2. En **Build and deployment**, selecciona:
